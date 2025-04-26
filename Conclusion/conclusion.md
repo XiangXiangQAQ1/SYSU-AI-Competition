@@ -389,14 +389,45 @@ git reset <file>
 
 ## 配环境总结
 1. cuda使用技巧
+```bash
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
-1. **虚拟环境**
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+```
+2. **虚拟环境**
 - 所有模型使用的时候都需要配一个新环境，除了非常新的模型，因为大部分模型的年代都有点久远，现在的libliary多少有些不兼容。
 ```python
 conda create -n fwx python==3.9
+# 大部分模型会写出自己的requirements
+pip install -r requirements.txt
+
 ```
+3. conda
+由于我们一直在与coda打交道，所以我们这里也来总结一下conda的用法
+- `conda env list`:列出所有的环境
+- `conda remove -n myenv --all`：删除模型
+- 安装指定的包
+```bash
+conda install numpy
+conda install numpy=1.19
+# 升级
+conda update numpy
+# 删除
+conda remove numpy
+```
+- `conda list`:列出环境所有的包
+- 制定源
+```bash
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+conda config --set show_channel_urls yes
 
+```
+- 到处当前环境
+```bash
+conda env export > environment.yml
 
+conda env create -f environment.yml
+
+```
 ## 模型总结
 
 ## 总结
