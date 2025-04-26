@@ -334,6 +334,8 @@ git checkout master
 git merge new-branch
 ```
 - `git branch -d`:删除分支
+- `git branch -m master main`：改名
+
 
 5. git 远程操作
 - `git remote add`:添加远程仓库
@@ -379,7 +381,7 @@ git reset <file>
 - 其次，对于不同的任务创建不同的分支
 - 接着，完成了一个target，例如DIP写完了一个函数，就add file，等整个写完了再commit。
 - 每次开始新写一些东西，git pull --rebase origin main，保证自己的main分支最新。
-- 当`git push origin main`时，先`git pull origin main`,看看**main**分支上有什么改变，接着`git switch new_branch`,`git rebase main`看看自己分支的功能还能正常进行吗
+- 当`git push origin main`时，先`git pull origin main`,看看**main**分支上有什么改变，接着`git switch new_branch`,`git rebase main`看看自己分支的功能还能正常进行吗？
 - 能正常进行之后，再`git push -f origin new_branch`,之后再上github pull and request
 
 
